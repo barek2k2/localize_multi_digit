@@ -1,30 +1,21 @@
-# Digit Localization Examples of this Gem in a short
-I18n.locale = :bn <br />
-Date.today.to_ld <br />
- => "২০১৩-১০-২৩"<br />
- "Hollo 56709 localizer 45!! digits".to_ld <br />
- => "Hollo ৫৬৭০৯ localizer ৪৫!! digits"<br />
- 786.9807.to_ld
- => "৭৮৬.৯৮০৭" 
- 
-I18n.locale = :ar <br /> 
-67890.to_ld <br /> 
-=> ٦٧٨٩٠ <br />
-Time.now.strftime("%d %B, %Y %H:%M").to_ld <br /> 
-=> ٢٣ October, ٢٠١٣
+# Introduction
 
+Sometimes it may need to translate digits from string into local languages other than english for localization, in this case
+localize_multi_digit ruby gem offers you flexibale way to make it done into your Rails application :-)
+
+#How to install
 
 To use this gem, Include it into your Gemfile:
 <pre>
   <code>
-   gem "localize_multi_digit", "~> 4.0.1"
+   gem "localize_multi_digit", "~> 4.0.4"
   </code>
 </pre>
 
 OR
 <pre>
   <code>
-   gem "localize_multi_digit", "~> 4.0.1", :git => "git@github.com:barek2k2/localize_multi_digit.git"
+   gem "localize_multi_digit", "~> 4.0.4", :git => "git@github.com:barek2k2/localize_multi_digit.git"
   </code>
 </pre>
 
@@ -42,19 +33,18 @@ Then run localize_multi_digit generator for configuration:
   </code>
 </pre>
 
-The above command will create 1 initializer and 1 sample digit localization file like this
+The above command will create 1 sample digit localization yml file into your Rails app like this:
 <pre>
   <code>
-      create  config/initializers/localize_multi_digit.rb
       create  config/locales/localized_digits.yml
 </code>
 </pre>
-You can add your localized digits as per localized_digits.yml file
 
 Then Restrat your application and you are Done!
 
-# How to use to_ld method for digit localizations
-You can call to_ld method from any controller,view,helper,model
+# How to use
+Localizing multiple digits from any string is very easy from your any controller,view,helper,model. 
+Tell I18n that your current language is Arabic and you can get your digits into arabic trsnalated like this
 <pre>
   <code>
     I18n.locale = :ar
@@ -64,6 +54,7 @@ You can call to_ld method from any controller,view,helper,model
   </code>
 </pre>
 
+Tell I18n your current language is Bangla and you can get your digit into bangla trsnalated
 <pre>
   <code>
     I18n.locale = :bn
@@ -73,9 +64,72 @@ You can call to_ld method from any controller,view,helper,model
   </code>
 </pre>
 
+#Customization
+Right now the gem includes only Bangla,Arabic,Hindi languages configuration stuff by default but its possible to add 
+your own languages to get the digit into your own language. For example, your language name is wow, then add 
+your maped digits 0..9 into the localized_digits.yml yml file like this:
 
+<pre>
+  <code>
+digits:
+  en:
+    '0': '0'
+    '1': '1'
+    '2': '2'
+    '3': '3'
+    '4': '4'
+    '5': '5'
+    '6': '6'
+    '7': '7'
+    '8': '8'
+    '9': '9'
 
+  bn:
+    '0': '০'
+    '1': '১'
+    '2': '২'
+    '3': '৩'
+    '4': '৪'
+    '5': '৫'
+    '6': '৬'
+    '7': '৭'
+    '8': '৮'
+    '9': '৯'
 
+  ar:
+    '0': '٠'
+    '1': '١'
+    '2': '٢'
+    '3': '٣'
+    '4': '٤'
+    '5': '٥'
+    '6': '٦'
+    '7': '٧'
+    '8': '٨'
+    '9': '٩'
 
+  wow:
+    '0': '!'
+    '1': '@'
+    '2': '+'
+    '3': '$'
+    '4': '%'
+    '5': '^'
+    '6': '&'
+    '7': '*'
+    '8': '('
+    '9': ')'
+    </code>
+</pre>
 
+Then restart the server!
 
+Now tell I18n that your current langauge name is wow like this:
+<pre>
+  <code>
+    I18n.locale = :wow
+    123.to_ld
+  </code>
+</pre>
+
+You should see "@+$" as @ stans for 1, + stands for 2 and $ stands for 3 and you are done :-D
