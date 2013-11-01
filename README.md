@@ -1,7 +1,7 @@
 # Introduction
 
-Sometimes it may need to translate digits from string into local languages other than english for localization, in this case
-localize_multi_digit ruby gem offers you flexibale way to make it done into your Rails application :-)
+Sometimes you may need to translate digits from string/float/fixnum into your own local languages other than english 
+for localization, in this case localize_multi_digit ruby gem offers you flexibale way to make it done into your Rails application :-)
 
 #How to install
 
@@ -43,8 +43,9 @@ The above command will create 1 sample digit localization yml file into your Rai
 Then Restrat your application and you are Done!
 
 # How to use
-Localizing multiple digits from any string is very easy from your any controller,view,helper,model. 
-Tell I18n that your current language is Arabic and you can get your digits into arabic trsnalated like this
+Localizing multiple digits from any string/fixnum/float is very easy from your any controller,view,helper,model. 
+
+Tell I18n that your current language is Arabic and you can get your digits into arabic trsnalated like this:
 <pre>
   <code>
     I18n.locale = :ar
@@ -54,7 +55,7 @@ Tell I18n that your current language is Arabic and you can get your digits into 
   </code>
 </pre>
 
-Tell I18n your current language is Bangla and you can get your digit into bangla trsnalated
+Tell I18n that your current language is Bangla and you can get your digit into bangla trsnalated:
 <pre>
   <code>
     I18n.locale = :bn
@@ -65,8 +66,8 @@ Tell I18n your current language is Bangla and you can get your digit into bangla
 </pre>
 
 #Customization
-Right now the gem includes only Bangla,Arabic,Hindi languages configuration stuff by default but its possible to add 
-your own languages to get the digit into your own language. For example, your language name is wow, then add 
+Right now the gem includes only Bangla,Arabic,Hindi languages configuration stuff by default but its ofcourse possible to add 
+to get the multiple digits into your own language translated. For example, your language name is wow, then add 
 your maped digits 0..9 into the localized_digits.yml yml file like this:
 
 <pre>
@@ -132,4 +133,4 @@ Now tell I18n that your current langauge name is wow like this:
   </code>
 </pre>
 
-You should see "@+$" as @ stans for 1, + stands for 2 and $ stands for 3 and you are done :-D
+You should see "@+$" as output because @ stans for 1, + stands for 2 and $ stands for 3 and you are done :-D
